@@ -1,0 +1,265 @@
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0px rgba(167, 139, 250, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.1);
+  }
+}
+@keyframes btnPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(145deg, #f5f0ff 0%, #fce8f3 50%, #e8f4fd 100%);
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 28px;
+  border: 1.5px solid rgba(200, 180, 255, 0.35);
+  padding: 2.8rem 2.4rem 2.4rem;
+  animation: floatIn 0.7s cubic-bezier(0.22, 0.68, 0, 1.2) both;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c4b5fd, #f9a8d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 22px;
+}
+.card-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #4c3d8f;
+  letter-spacing: -0.3px;
+}
+.card-header p {
+  font-size: 13.5px;
+  color: #9d90c2;
+  margin-top: 4px;
+}
+
+.divider {
+  height: 1.5px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(180, 155, 255, 0.3),
+    transparent
+  );
+  border: none;
+  margin-bottom: 1.8rem;
+}
+
+.field {
+  position: relative;
+  margin-bottom: 1.3rem;
+}
+.field label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13.5px;
+  color: #b0aec8;
+  pointer-events: none;
+  transition: all 0.22s ease;
+  background: transparent;
+  padding: 0 4px;
+}
+.field.textarea-field label {
+  top: 18px;
+  transform: none;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 15px 16px 10px;
+  border: 1.5px solid rgba(200, 185, 255, 0.5);
+  border-radius: 14px;
+  background: rgba(248, 245, 255, 0.7);
+  font-size: 14px;
+  color: #3d3060;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+  font-family: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.field textarea {
+  resize: none;
+  height: 100px;
+  padding-top: 28px;
+  line-height: 1.5;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: rgba(160, 120, 255, 0.7);
+  background: rgba(255, 255, 255, 0.95);
+  animation: pulse 1.8s ease infinite;
+}
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field select:focus + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+  top: 7px;
+  transform: none;
+  font-size: 10.5px;
+  color: #9b8ec4;
+  font-weight: 500;
+}
+.field.textarea-field textarea:focus + label,
+.field.textarea-field textarea:not(:placeholder-shown) + label {
+  top: 7px;
+}
+
+.select-wrap {
+  position: relative;
+}
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #b0aec8;
+  pointer-events: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.check-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0.6rem 0 1.5rem;
+}
+.check-group input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(180, 155, 255, 0.6);
+  background: rgba(248, 245, 255, 0.7);
+  accent-color: #a78bfa;
+  margin-top: 1px;
+  cursor: pointer;
+}
+.check-group label {
+  font-size: 12.5px;
+  color: #9d90c2;
+  cursor: pointer;
+  line-height: 1.5;
+}
+.check-group label a {
+  color: #9b8ec4;
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: #fff;
+  background: linear-gradient(135deg, #a78bfa 0%, #ec8ec9 100%);
+  background-size: 200% auto;
+  transition:
+    background-position 0.4s,
+    transform 0.15s;
+}
+.btn:hover {
+  background-position: right center;
+  animation: shimmer 1.4s linear infinite;
+}
+.btn:active {
+  animation: btnPress 0.2s ease;
+}
+
+.footer-note {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 12.5px;
+  color: #b8b0d0;
+}
+.footer-note a {
+  color: #a78bfa;
+  text-decoration: none;
+}
